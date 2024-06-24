@@ -15,9 +15,14 @@
   "bugs": {
     "url": "https://github.com/doradsoft/gematry/issues"
   },
+  "keywords": [
+    "gematria",
+    "calculator",
+    "hebrew"
+  ],
   "scripts": {
     "build": "node --import tsx ./node_modules/webpack-cli/bin/cli.js --config webpack.config.ts",
-    "publish": "npm run test && npm run build",
+    "publish": "",
     "test": "node --import tsx ./node_modules/jest/bin/jest.js",
     "watch": "node --import tsx ./node_modules/webpack-cli/bin/cli.js --config webpack.config.ts --watch --mode development"
   },
