@@ -22,6 +22,34 @@ describe("toLetters", () => {
     );
   });
 });
+describe("when called with 15", () => {
+  describe("when maskHashem option is false", () => {
+    it("returns יה", () => {
+      const actual = toLetters(15, { maskHashem: false });
+      expect(actual).toBe("יה");
+    });
+  });
+  describe("when maskHashem option is true", () => {
+    it("returns טו", () => {
+      const actual = toLetters(15);
+      expect(actual).toBe("טו");
+    });
+  });
+});
+describe("when called with 16", () => {
+  describe("when maskHashem option is false", () => {
+    it("returns יו", () => {
+      const actual = toLetters(16, { maskHashem: false });
+      expect(actual).toBe("יו");
+    });
+  });
+  describe("when maskHashem option is true", () => {
+    it("returns טז", () => {
+      const actual = toLetters(16);
+      expect(actual).toBe("טז");
+    });
+  });
+});
 describe("when called with 400", () => {
   it("returns ת", () => {
     const actual = toLetters(400);

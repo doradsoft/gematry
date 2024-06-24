@@ -1,6 +1,6 @@
 export function toNumber(
   phrase: string,
-  options: ToNumberOptions = DEFAULT_TO_NUMBER_OPTIONS
+  options: Partial<ToNumberOptions> = DEFAULT_TO_NUMBER_OPTIONS
 ): number {
   // fill missing options with defaults
   options = { ...DEFAULT_TO_NUMBER_OPTIONS, ...options };
@@ -22,7 +22,7 @@ export function toNumber(
 }
 export function toLetters(
   number: number,
-  options: ToLettersOptions = DEFAULT_TO_LETTERS_OPTIONS
+  options: Partial<ToLettersOptions> = DEFAULT_TO_LETTERS_OPTIONS
 ): string {
   // fill missing options with defaults
   options = { ...DEFAULT_TO_LETTERS_OPTIONS, ...options };
@@ -52,8 +52,14 @@ export function toLetters(
   if (hundredsPart > 0) {
     result += keyByValue(hundredsPart);
   }
-  result += keyByValue(tensPart);
-  result += keyByValue(unitsPart);
+  if (options.maskHashem && tensPart + unitsPart === 15) {
+    result += "טו";
+  } else if (options.maskHashem && tensPart + unitsPart === 16) {
+    result += "טז";
+  } else {
+    result += keyByValue(tensPart);
+    result += keyByValue(unitsPart);
+  }
 
   if (
     options.addQuotes &&
@@ -105,8 +111,8 @@ const lettersValuesWithMantzpach = {
 };
 
 interface ToNumberOptions {
-  treatManzpachDifferently?: boolean;
-  throwIfNotLetter?: boolean;
+  treatManzpachDifferently: boolean;
+  throwIfNotLetter: boolean;
 }
 const DEFAULT_TO_NUMBER_OPTIONS: ToNumberOptions = {
   treatManzpachDifferently: false,
@@ -115,11 +121,13 @@ const DEFAULT_TO_NUMBER_OPTIONS: ToNumberOptions = {
 type Letter = keyof typeof lettersValuesWithMantzpach;
 
 interface ToLettersOptions {
-  thousands?: boolean;
-  thousandsSeparator?: string;
-  addQuotes?: boolean;
+  maskHashem: boolean;
+  thousands: boolean;
+  thousandsSeparator: string;
+  addQuotes: boolean;
 }
 const DEFAULT_TO_LETTERS_OPTIONS: ToLettersOptions = {
+  maskHashem: true,
   thousands: false,
   thousandsSeparator: "",
   addQuotes: false,
