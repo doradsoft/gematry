@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+.vscode/
+test/
+jest.config.js
+gematry*.tgz
+tsconfig.json
+webpack.config.ts
