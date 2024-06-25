@@ -20,11 +20,6 @@
     "moduleResolution": "node",
     "outDir": "./dist",
     "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*"],
-      "webpack": ["node_modules/webpack"],
-      "jest": ["node_modules/jest"]
-    },
     "types": ["jest"]
   },
   "include": ["src/**/*.ts"],
