@@ -21,7 +21,9 @@
     "hebrew"
   ],
   "scripts": {
+    "update": "npx npm-check-updates --peer --deep -u && npm install && npm install",
     "build": "node --import tsx ./node_modules/webpack-cli/bin/cli.js --config webpack.config.ts",
+    "lint": "npx eslint -c ./eslint.config.mjs",
     "publish": "",
     "test": "node --import tsx ./node_modules/jest/bin/jest.js",
     "watch": "node --import tsx ./node_modules/webpack-cli/bin/cli.js --config webpack.config.ts --watch --mode development"
@@ -29,13 +31,14 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "eslint": "^8.57.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "jest": "^29.7.0",
-    "ts-jest": "^29.1.5",
+    "ts-jest": "^29.2.3",
     "ts-loader": "^9.5.1",
-    "tsx": "^4.15.7",
-    "typescript": "^5.4.5",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.0-alpha.14",
-    "webpack": "^5.92.0",
+    "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4"
   }
 }
