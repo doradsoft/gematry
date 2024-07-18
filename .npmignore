@@ -1,8 +1,12 @@
 node_modules/
 coverage/
+.github/
 .vscode/
 test/
+codecov.yml
+eslint.config.mjs
 jest.config.js
 gematry*.tgz
 tsconfig.json
 webpack.config.ts
+.pre-commit-config.yaml
